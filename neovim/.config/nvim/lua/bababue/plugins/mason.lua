@@ -1,6 +1,13 @@
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			{
+				"mason-org/mason.nvim",
+				opts = {},
+			},
+			"neovim/nvim-lspconfig",
+		},
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
@@ -49,17 +56,18 @@ return {
 				end,
 			})
 		end,
-		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				opts = {},
-			},
-			"neovim/nvim-lspconfig",
-		},
 	},
 	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {},
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"stylua",
+					"prettier",
+					"ruff",
+				},
+			})
+		end,
 	},
 }
