@@ -5,8 +5,8 @@ return {
 
 		require("mini.pairs").setup()
 
-		require("mini.files").setup()
-		vim.keymap.set("n", "<leader>e", MiniFiles.open, { desc = "Toggle file explorer" })
+		-- require("mini.files").setup()
+		-- vim.keymap.set("n", "<leader>e", MiniFiles.open, { desc = "Toggle file explorer" })
 
 		local spec_treesitter = require("mini.ai").gen_spec.treesitter
 		require("mini.ai").setup({
