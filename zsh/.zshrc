@@ -107,7 +107,7 @@ fi
 
 export LEDGER_FILE="~/finances/journals/main.journal"
 
-alias gs='git status -s'
+alias gs='git status'
 alias gl='git log --oneline'
 alias gc='git commit -m'
 
@@ -115,6 +115,14 @@ alias gca='git commit -a -m'
 alias ga='git add'
 alias gd='git diff'
 alias gp='git pull'
+gupload() {
+  if (( $# == 0 )); then
+    echo "Bitte eine Commit-Nachricht angeben."
+    return 1
+  fi
+  git add . && git commit -m "$*" && git push origin master
+}
+
 
 alias hla="hledger add"
 alias hlb="hledger balancesheet --cost --tree"
@@ -129,7 +137,6 @@ alias ts=trash
 alias ..="cd .."
 alias ...="cd ../.."
 alias c="clear"
-alias x="exit"
 
 alias ls='eza'
 alias la='eza -lahg'
@@ -147,7 +154,24 @@ alias claude='SHELL=/bin/bash claude'
 
 alias l_zsh="(source $HOME/.zshrc)"
 
-alias whatsmyip="curl http://ipecho.net/plain; echo"
+whatsmyip() {
+  local local_ip interface
+
+  case "$(uname -s)" in
+    Darwin)
+      interface=$(route -n get default 2>/dev/null | awk '/interface:/{print $2; exit}')
+      [[ -n $interface ]] && local_ip=$(ifconfig "$interface" 2>/dev/null | awk '$1 == "inet" {print $2; exit}')
+      ;;
+    Linux)
+      local_ip=$(ip -4 route get 1.1.1.1 2>/dev/null | awk '{for (i = 1; i <= NF; i++) if ($i == "src") {print $(i + 1); exit}}')
+      ;;
+  esac
+
+  printf 'Local IP: %s\n' "${local_ip:-unavailable}"
+  printf 'Public IP: '
+  curl http://ipecho.net/plain
+  printf '\n'
+}
 alias dlv='yt-dlp -S "ext" -S "height:1080"'
 alias dla="yt-dlp --extract-audio --audio-format mp3"
 
