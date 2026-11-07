@@ -23,7 +23,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
---Fixed search
+--Search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.smartcase = true
@@ -33,6 +33,16 @@ vim.g.mapleader = " "
 
 --Window borders
 vim.o.winborder = "rounded"
+
+--Autoread (For ai workflows)
+vim.o.autoread = true
+
+--Fix latex detection error
+vim.filetype.add({
+	extension = {
+		tex = "tex",
+	},
+})
 
 vim.diagnostic.config({
 	virtual_text = {

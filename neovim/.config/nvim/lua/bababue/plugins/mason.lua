@@ -19,6 +19,8 @@ return {
 					"marksman",
 					"gopls",
 					"clangd",
+					"oxlint",
+					"vtsls",
 				},
 			})
 
