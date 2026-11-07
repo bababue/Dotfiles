@@ -8,10 +8,10 @@ return {
 				lua = { "stylua" },
 				markdown = { "prettier" },
 			},
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true, -- falls kein Formatter definiert → LSP als Fallback
-			},
+			-- format_on_save = {
+			-- 	timeout_ms = 500,
+			-- 	lsp_fallback = true, -- falls kein Formatter definiert → LSP als Fallback
+			-- },
 		})
 	end,
 }
