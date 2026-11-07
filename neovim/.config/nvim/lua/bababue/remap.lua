@@ -19,6 +19,9 @@ vim.keymap.set("", "<leader>d", '"_d', { desc = "Delete without buffering" })
 vim.keymap.set("", "<leader>D", '"_D', { desc = "Delete without buffering" })
 
 vim.keymap.set("", "<leader>c", '"_d', { desc = "Change without buffering" })
+vim.keymap.set("n", "<leader>=", function()
+	require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "Format current buffer" })
 vim.keymap.set("", "<leader>C", '"_D', { desc = "Change without buffering" })
 
 vim.keymap.set("", "<leader>y", '"+y', { desc = "Yank into system clipboard" })
