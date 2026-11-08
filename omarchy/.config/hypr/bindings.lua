@@ -39,12 +39,12 @@
 -- ---------------------------------------------
 
 -- Terminal (zsh)
-hl.unbind("SUPER + RETURN")
-o.bind("SUPER + RETURN", "Terminal", { launch = 'xdg-terminal-exec --dir="$(omarchy-cmd-terminal-cwd)" zsh' })
+hl.unbind("SUPER + ALT + RETURN")
+o.bind("SUPER + ALT + RETURN", "Terminal", { launch = 'xdg-terminal-exec --dir="$(omarchy-cmd-terminal-cwd)" zsh' })
 
 -- Tmux (Session "main")
-hl.unbind("SUPER + ALT + RETURN")
-o.bind("SUPER + ALT + RETURN", "Tmux",
+hl.unbind("SUPER + RETURN")
+o.bind("SUPER + RETURN", "Tmux",
     { launch = 'xdg-terminal-exec --dir="$(omarchy-cmd-terminal-cwd)" tmux new -A -s main' })
 
 -- Nautilus
